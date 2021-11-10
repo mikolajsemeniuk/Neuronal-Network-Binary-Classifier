@@ -6,10 +6,10 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from datetime import datetime
 
-iris = load_breast_cancer()
-inputs: ndarray = iris.data
-targets: ndarray = iris.target
-print(f'{inputs.shape}, {targets.shape}')
+breast_cancer = load_breast_cancer()
+inputs: ndarray = breast_cancer.data
+targets: ndarray = breast_cancer.target
+print(f'inputs: {inputs.shape}, targets: {targets.shape}')
 
 
 inputs_train: ndarray
