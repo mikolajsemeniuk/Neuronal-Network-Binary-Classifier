@@ -1,0 +1,12 @@
+name: binary_classifier
+channels:
+  - conda-forge
+dependencies:
+  - numpy==1.16.4
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - pytorch
+  - cudatoolkit=11.3
+  - tensorflow
