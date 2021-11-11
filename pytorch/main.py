@@ -51,16 +51,12 @@ for epoch in range(epochs):
     loss: Tensor = \
         criterion(predictions, y_train.reshape(-1, 1))
  
-    # round
-    # predicted = model(X_train)
-    # acc = (predicted.reshape(-1).detach().numpy().round() == y_train.detach().numpy()).mean()
-    # predicted = model(X_train)
-    # acc = (predictions.reshape(-1).round() == y_train).mean()
-    y_prob = predictions > 0.5
-    acc = (targets_train == y_prob).sum().item() / targets_train.size(0)
+    accuracy: Tensor = \
+            (predictions.clone().reshape(-1).detach().numpy().round() == \
+            y_train.clone().detach().numpy()).mean()
  
     loss.backward()
 
     optimizer.step()
 
-    print(f"epoch {epoch + 1}, loss : {loss:.4f}, accuracy : {acc:.4f}")
+    print(f"epoch {epoch + 1}, loss : {loss:.4f}, accuracy : {accuracy:.4f}")
