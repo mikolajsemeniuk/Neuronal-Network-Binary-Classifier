@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from datetime import datetime
+import tensorflow as tf
 
 breast_cancer = load_breast_cancer()
 inputs: ndarray = breast_cancer.data
@@ -19,12 +20,14 @@ targets_test: ndarray
 inputs_train, inputs_test, targets_train, targets_test = \
     train_test_split(inputs, targets, test_size = 0.3, random_state = 2021)
 
+# optimizer = tf.keras.optimizers.Adam()
+optimizer = tf.keras.optimizers.SGD(learning_rate = 0.001)
 
 model = Sequential([
-    Dense(64, input_dim = 30, activation = 'relu'),
+    Dense(32, input_dim = 30, activation = 'relu'),
     Dense(1, activation = 'sigmoid')
 ])
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 print(model.summary())
 
 
