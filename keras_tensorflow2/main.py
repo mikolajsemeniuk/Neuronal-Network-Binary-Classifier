@@ -24,7 +24,7 @@ inputs_train, inputs_test, targets_train, targets_test = \
 optimizer = tf.keras.optimizers.SGD(learning_rate = 0.001)
 
 model = Sequential([
-    Dense(32, input_dim = 30, activation = 'relu'),
+    Dense(64, input_dim = 30, activation = 'relu'),
     Dense(1, activation = 'sigmoid')
 ])
 model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
